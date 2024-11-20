@@ -9,11 +9,11 @@ class Productos extends BaseController
        // print_r ($this->session);
     }
 
-    public function show(){
-        return "<h2>Detalles del producto</h2>";
+    public function show($id){
+        return "<h2>Detalles del producto $id</h2>";
     }
 
-    public function edit(){
-        return "<h2>Editar producto</h2>";
+    public function cat($categoria, $id){
+        return "<h2>Categoria: $categoria <br> Producto: $id</h2>";
     }
 }

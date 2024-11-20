@@ -9,5 +9,15 @@ use CodeIgniter\Router\RouteCollection;
  //Objeto/metodo http/ ruta/ parametro/ controlador/ nombre metodo / parametro
 $routes->get('/', 'Home::index');
 $routes->get('/productos','Productos::index');
-$routes->get('/productos/show','Productos::show');
+//$routes->get('/productos/show','Productos::show');
 $routes->get('/productos/edit','Productos::edit');
+$routes->get('/productos/([0-9]{2})', 'Productos::show/$1');
+$routes->get('/productos/(:alpha)/(:num)', 'Productos::cat/$2/$1');
+
+$routes->view('productosList/(:alpha)', 'lista_productos');
+
+//gurpos de rutas
+$routes->group('admin', static function($routes){
+    $routes->get('/productos','Admin/Productos::index');
+
+});
