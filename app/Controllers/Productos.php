@@ -4,16 +4,28 @@ namespace App\Controllers;
 
 class Productos extends BaseController
 {
-    public function index(){
-        echo "<h1>ControllerProductos</h1>";
-       // print_r ($this->session);
+    public function index()
+    {
+        /* Indice de arreglo ()nombre de la varible) y un valor*/
+        $data = ['titulo' => 'Catalago de productos '];
+        return view('plantilla/header', $data)
+        .view('productos/index', $data)
+        .view('plantilla/footer', ["copy" => "2023"]);
+
+
+        // return view('productos/index', $data);
     }
 
-    public function show($id){
-        return "<h2>Detalles del producto $id</h2>";
+    public function show($id)
+    {
+        $data = ['titulo' => 'Catalago de productos', 'id' => $id];
+        return view('plantilla/header', $data)
+        .view('productos/show', $data)
+        .view('plantilla/footer', ["copy" => "2023"]);
     }
 
-    public function cat($categoria, $id){
+    public function cat($categoria, $id)
+    {
         return "<h2>Categoria: $categoria <br> Producto: $id</h2>";
     }
 }
